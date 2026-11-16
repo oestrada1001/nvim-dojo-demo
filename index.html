@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nvim-dojo</title>
+<meta name="description" content="Drill plugin-specific Neovim workflows. A five-challenge taste of the Telescope track, in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="mobile">
+  <div class="card">
+    <h1>Desktop only</h1>
+    <p>nvim-dojo is about keyboard muscle memory, so a touchscreen version would
+       be teaching the wrong thing entirely.</p>
+    <p class="dim">Open this on a machine with a keyboard.</p>
+  </div>
+</div>
+
+<div id="editor">
+  <div id="hud"></div>
+  <div id="buffer"></div>
+
+  <div id="picker">
+    <div class="ptitle"><span id="ptitle">Find Files</span><span class="pcount" id="pcount"></span></div>
+    <div class="presults" id="presults"></div>
+    <div class="prompt" id="pprompt"></div>
+  </div>
+
+  <div id="helper"></div>
+  <div id="cmdline"></div>
+  <div id="statusline">
+    <span class="mode" id="mode">NORMAL</span>
+    <span class="seg" id="file">[No Name]</span>
+    <span class="spacer"></span>
+    <span class="seg progress" id="progress"></span>
+    <span class="seg">tokyonight</span>
+  </div>
+
+  <!-- intro -->
+  <div class="overlay open" id="intro">
+    <div class="card">
+      <h1>nvim-dojo</h1>
+      <h2>Drill the toolchain you actually use.</h2>
+      <p>Most Vim trainers stop at <code>hjkl</code>. The hard part of Neovim is not
+         motions — it is reaching for the right plugin, fast, without thinking.</p>
+      <p>Five challenges, about a minute. You will open a fuzzy finder, narrow 150
+         files down to one, search file contents, and chain a search into the
+         quickfix list.</p>
+      <ul>
+        <li><kbd>&lt;space&gt;ff</kbd> find files &nbsp; <kbd>&lt;space&gt;fg</kbd> live grep</li>
+        <li>Type to filter &nbsp; <kbd>Tab</kbd> multi-select &nbsp; <kbd>&lt;CR&gt;</kbd> open</li>
+        <li><kbd>&lt;C-q&gt;</kbd> send to quickfix &nbsp; <kbd>Esc</kbd> close</li>
+        <li><kbd>:</kbd> command line — <kbd>:Dojo hint</kbd> if you get stuck</li>
+      </ul>
+      <p class="dim">This simulation teaches one set of keys. The real plugin never checks
+         which key you press — it checks that the picker actually ran, so your own
+         bindings work unchanged.</p>
+      <p><span class="go">Enter</span> <span class="dim">begin</span></p>
+    </div>
+  </div>
+
+  <!-- per-challenge result / final card -->
+  <div class="overlay" id="result">
+    <div class="card" id="result-card"></div>
+  </div>
+
+  <!-- Shown whenever the document does not hold keyboard focus. Embedded in an
+       iframe that has never been clicked, a keydown listener on `window` hears
+       nothing, so without this a visitor types at a game that looks live and
+       silently gets no response. -->
+  <div id="focus-veil">
+    <p>Click to play</p>
+  </div>
+</div>
+
+<script type="module" src="game.js"></script>
+</body>
+</html>
